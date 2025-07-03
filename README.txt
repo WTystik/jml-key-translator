@@ -19,24 +19,22 @@ jml-key-translator/
 - Maven (https://maven.apache.org/download.cgi)
 - PowerShell (по умолчанию есть в Windows)
 
-Сборка проекта:
-1. Откройте PowerShell и перейдите в папку проекта:
-   cd путь\к\папке\jml-key-translator
-2. Соберите проект с помощью Maven:
-   mvn clean package
-   После успешной сборки появится файл target/jml-key-translator-1.0.jar
+Сборка и запуск проекта без Maven (через консоль)
+=====================================================
 
-Запуск транслятора:
-1. Трансляция одного файла:
-   java -cp target/jml-key-translator-1.0.jar com.spbu.jmltranslator.JmlKeyTranslator путь\к\входному\файлу.java путь\к\выходному\файлу.java
-   Пример:
-   java -cp target/jml-key-translator-1.0.jar com.spbu.jmltranslator.JmlKeyTranslator test_files\Account.java output_test\Account_key.java
+1. Перейдите в папку с исходниками:
+   cd C:\Users\...\summer\jml-key-translator\src\main\java
 
-2. Пакетная трансляция (всей папки):
-   java -cp target/jml-key-translator-1.0.jar com.spbu.jmltranslator.JmlBatchTranslator путь\к\входной\папке путь\к\выходной\папке
-   Пример:
-   java -cp target/jml-key-translator-1.0.jar com.spbu.jmltranslator.JmlBatchTranslator test_files output_test
-   В выходной папке появятся файлы только для тех методов, которые содержат JML-аннотации.
+2. Скомпилируйте все .java-файлы в папку target/classes:
+   javac -d ..\..\..\..\target\classes com\spbu\jmltranslator\*.java com\spbu\jmltranslator\fileio\*.java com\spbu\jmltranslator\model\*.java com\spbu\jmltranslator\translator\*.java
+
+3. Перейдите в корень проекта:
+   cd C:\Users\...\summer\jml-key-translator
+
+4. Запустите пакетную трансляцию (пример для вашего ПК):
+   java -cp target\classes com.spbu.jmltranslator.JmlBatchTranslator C:\Users\...\summer\test_files C:\...\Desktop\summer\output_test
+
+В папке output_test появятся файлы только для тех методов, которые содержат JML-аннотации.
 
 ---
 
